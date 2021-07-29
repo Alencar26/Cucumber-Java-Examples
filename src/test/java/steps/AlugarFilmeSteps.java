@@ -12,7 +12,6 @@ import utils.DateUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class AlugarFilmeSteps {
@@ -46,20 +45,7 @@ public class AlugarFilmeSteps {
     public void oPreçoDoAluguelSeráR$(Integer valorAluguel) {
         Assert.assertEquals(valorAluguel.intValue(), nota.getPreco());
     }
-    @Test
-    @Então("a data de entrega será no dia seguinte")
-    public void aDataDeEntregaSeráNoDiaSeguinte() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DAY_OF_MONTH, 1);
 
-        Date dataRetorno = nota.getDataEntrega();
-        Calendar calRetorno = Calendar.getInstance();
-        calRetorno.setTime(dataRetorno);
-
-        Assert.assertEquals(cal.get(Calendar.DAY_OF_MONTH), calRetorno.get(Calendar.DAY_OF_MONTH));
-        Assert.assertEquals(cal.get(Calendar.MONTH), calRetorno.get(Calendar.MONTH));
-        Assert.assertEquals(cal.get(Calendar.YEAR), calRetorno.get(Calendar.YEAR));
-    }
     @Test
     @Então("o estoque do filme será {int} unidade")
     public void oEstoqueDoFilmeSeráUnidade(Integer qntEstoque) {
@@ -78,7 +64,7 @@ public class AlugarFilmeSteps {
     }
 
     @Test
-    @Então("a data de entrega será em {int} dias")
+    @Então("^a data de entrega será em (\\d+) dias?$")
     public void aDataDeEntregaSeráEmDias(Integer dias) {
         Date dataEsperada = DateUtils.obterDataDiferencaDias(dias);
         Date dataReal = nota.getDataEntrega();

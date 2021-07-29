@@ -10,7 +10,7 @@
     E que o preço de aluguel seja R$ 3
     Quando alugar
     Então o preço do aluguel será R$ 3
-    E a data de entrega será no dia seguinte
+    E a data de entrega será em 1 dia
     E o estoque do filme será 1 unidade
 
   Cenario: Não deve alugar filme sem estoque
