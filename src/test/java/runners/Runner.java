@@ -8,7 +8,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "/home/alencar/www/Curso-Cucumber-Java/src/test/resources/alugar_filme.feature", // caminho dos arquivos feature
         glue = "steps", // caminho/ pacote dos steps codificados
-        plugin = "pretty",
+        plugin = {"pretty", // é o relatórios dos cenários
+                "html:target/report-html.html", // relatório em HTML detalhado
+                "json:target/report.json"
+        },
         // monochrome = false, // para não aplicar cor no console
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         dryRun = false, // serve para validar se o mapeamento está correto
