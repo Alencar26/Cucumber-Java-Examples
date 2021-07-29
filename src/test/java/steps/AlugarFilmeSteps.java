@@ -1,6 +1,8 @@
 package steps;
 
 import entidades.Filme;
+import entidades.TipoAluguel;
+import io.cucumber.java.ParameterType;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
@@ -20,7 +22,7 @@ public class AlugarFilmeSteps {
     private AluguelService aluguel = new AluguelService();
     private NotaAluguel nota;
     private String erro;
-    private String tipoAluguel;
+    private TipoAluguel tipoAluguel = TipoAluguel.COMUM;
 
     @Dado("um filme com estoque de {int} unidades")
     public void umFilmeComEstoqueDeUnidades(Integer qntUnidades) {
@@ -58,9 +60,15 @@ public class AlugarFilmeSteps {
         Assert.assertEquals("Filme sem estoque", erro);
     }
 
-    @Dado("que o tipo de aluguel seja extendido")
-    public void queOTipoDeAluguelSejaExtendido() {
-        tipoAluguel = "extendido";
+    @ParameterType(".*")
+    public TipoAluguel tipoAluguel(String s){
+        return s.equals("semanal")? TipoAluguel.SEMANAL :
+                s.equals("extendido")? TipoAluguel.EXTENDIDO : TipoAluguel.COMUM;
+    }
+
+    @Dado("que o tipo de aluguel seja {tipoAluguel}")
+    public void queOTipoDeAluguelSejaExtendido(TipoAluguel tipo) {
+        tipoAluguel = tipo;
     }
 
     @Test
