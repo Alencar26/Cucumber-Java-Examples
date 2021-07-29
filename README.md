@@ -3,7 +3,7 @@
 
 This repository is intended for the study of testing techniques. Using Cucumber, JUnit, BDD and Java
 
-![Logo](https://github.com/Alencar26/Cucumber-Java-Examples/blob/master/readme/logo.svg)
+![Logo](https://github.com/Alencar26/Cucumber-Java-Examples/blob/main/readme/logo.svg)
 
 ![GitHub language count](https://img.shields.io/github/languages/count/Alencar26/Cucumber-Java-Examples)
 ![GitHub top language](https://img.shields.io/github/languages/top/Alencar26/Cucumber-Java-Examples?color=%23FF7043)
