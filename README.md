@@ -9,6 +9,6 @@ This repository is intended for the study of testing techniques. Using Cucumber,
 ![GitHub top language](https://img.shields.io/github/languages/top/Alencar26/Cucumber-Java-Examples?color=%23FF7043)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Alencar26/Cucumber-Java-Examples)
 
-## Tecnologias Utilizadas
+## Technologies used
 
-**Backend:** [Java](https://www.java.com/pt-BR/), [Maven](https://maven.apache.org/), [Cucumber](https://cucumber.io/), [JUnit](https://junit.org/junit5/)
+**Backend:** [Java](https://www.java.com/pt-BR/), [Maven](https://maven.apache.org/), [Cucumber](https://cucumber.io/), [JUnit](https://junit.org/junit5/), [Selenium](https://www.selenium.dev/)
