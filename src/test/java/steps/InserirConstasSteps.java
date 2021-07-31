@@ -1,10 +1,11 @@
 package steps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
@@ -82,5 +83,27 @@ public class InserirConstasSteps {
         } else {
             Assert.assertEquals("Conta adicionada com sucesso!", alert);
         }
+    }
+
+    @Então("sou notificado que o nome da conta é obrigatório")
+    public void souNotificadoQueONomeDaContaÉObrigatório() {
+        String txtAlert = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
+        Assert.assertEquals("Informe o nome da conta", txtAlert);
+    }
+
+    @Então("sou notificado que já existe uma conta com esse nome")
+    public void souNotificadoQueJáExisteUmaContaComEsseNome() {
+        String txtAlert = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
+        Assert.assertEquals("Já existe uma conta com esse nome!", txtAlert);
+    }
+
+    @Before
+    public void exemploBefore(){
+        System.out.println("Começando cenário aqui!");
+    }
+
+    @After // after do Cucumber
+    public void fecharBrowser(){
+        driver.quit();
     }
 }
