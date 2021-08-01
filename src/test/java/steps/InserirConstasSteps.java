@@ -2,15 +2,17 @@ package steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.io.File;
+import java.io.IOException;
 
 public class InserirConstasSteps {
 
@@ -97,12 +99,28 @@ public class InserirConstasSteps {
         Assert.assertEquals("Já existe uma conta com esse nome!", txtAlert);
     }
 
+    @Então("recebo a mensagem {string}")
+    public void receboAMensagem(String mensagem) {
+        String txtAlert = driver.findElement(By.xpath("//div[starts-with(@class, 'alert alert-')]")).getText();
+        Assert.assertEquals(mensagem, txtAlert);
+    }
+
     @Before
     public void exemploBefore(){
         System.out.println("Começando cenário aqui!");
     }
 
-    @After // after do Cucumber
+    @After(order = 1)
+    public void screenshot(Scenario cenario){
+        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(file, new File("target/screenshots/"+cenario.getId()+".jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @After (order = 0)// after do Cucumber
     public void fecharBrowser(){
         driver.quit();
     }
