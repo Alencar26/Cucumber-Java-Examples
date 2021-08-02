@@ -1,7 +1,6 @@
 package steps;
 
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
@@ -105,12 +104,7 @@ public class InserirConstasSteps {
         Assert.assertEquals(mensagem, txtAlert);
     }
 
-    @Before
-    public void exemploBefore(){
-        System.out.println("Começando cenário aqui!");
-    }
-
-    @After(order = 1)
+    @After(order = 1, value = "@funcional")
     public void screenshot(Scenario cenario){
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
@@ -120,7 +114,7 @@ public class InserirConstasSteps {
         }
     }
 
-    @After (order = 0)// after do Cucumber
+    @After (order = 0, value = "@funcional")// after do Cucumber
     public void fecharBrowser(){
         driver.quit();
     }
